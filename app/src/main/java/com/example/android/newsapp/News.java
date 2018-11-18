@@ -1,5 +1,7 @@
 package com.example.android.newsapp;
 
+import java.net.URL;
+
 public class News{
 
     /**
@@ -31,6 +33,14 @@ public class News{
      * Get date
      */
     private String webPublicationDate;
+
+
+    /**
+     * URL?
+     */
+    public static final String
+            REQUEST_URL = "https://content.guardianapis.com/search?show-tags=technology&api-key=test";
+
 
 
 

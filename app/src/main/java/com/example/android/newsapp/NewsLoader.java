@@ -154,13 +154,13 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
                 String webUrl = currentResults.getString("webUrl");
 
 
-                JSONArray webTitle = currentResults.getJSONArray("webTitle");
+                JSONArray webTitle = currentResults.getJSONArray("tags");
                 String author = "";
                 if (webTitle.length() != 0) {
                     JSONObject currenttagsAuthor = webTitle.getJSONObject(0);
-                    author = currenttagsAuthor.getString("webTitle");
+                    author = currenttagsAuthor.getString("tags");
                 } else {
-                    author = "No Author ..";
+                    author = "No Author ...";
                 }
 
                 News news = new News(title, sectionName, webUrl, date, author);

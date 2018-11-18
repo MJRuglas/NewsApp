@@ -132,7 +132,7 @@ public class QueryUtils {
                 String webUrl = currentResults.getString("webUrl");
 
 
-                JSONArray webTitle = currentResults.getJSONArray("webTitle");
+                JSONArray webTitle = currentResults.getJSONArray("tags");
                 String author = "";
                 if (webTitle.length() != 0) {
                     JSONObject currenttagsAuthor = webTitle.getJSONObject(0);

@@ -22,7 +22,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<News>> {
     private NewsAdapter adapter;
     private TextView mNoContentTextView;
-    private static final String REQUEST_URL = "https://content.guardianapis.com/search";
     private static final int LOADER_ID = 1;
 
     @Override
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
                 News news = adapter.getItem(position);
 
-                Uri newsUri = Uri.parse(news.getWebUrl());
+                Uri newsUri = Uri.parse(news.REQUEST_URL);
 
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
@@ -74,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
         View loadingIndicator = findViewById(R.id.loading_indicator);
+        adapter.setItems(news);
         loadingIndicator.setVisibility(View.GONE);
     }
 

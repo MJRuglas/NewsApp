@@ -27,11 +27,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
 
         News news = getItem(position);
 
-        TextView webTitle = convertView.findViewById(R.id.title_text_view);
-        TextView webPublicationDate = convertView.findViewById(R.id.date_text_view);
-        TextView sectionName = convertView.findViewById(R.id.section_text_view);
-        TextView webUrl = convertView.findViewById(R.id.webUrl_text_view);
-        TextView authorTextView = convertView.findViewById(R.id.author_text_view);
+        TextView webTitle = listItemView.findViewById(R.id.title_text_view);
+        TextView webPublicationDate = listItemView.findViewById(R.id.date_text_view);
+        TextView sectionName = listItemView.findViewById(R.id.section_text_view);
+        TextView webUrl = listItemView.findViewById(R.id.webUrl_text_view);
+        TextView authorTextView = listItemView.findViewById(R.id.author_text_view);
         webTitle.setText(news.getWebTitle());
         webPublicationDate.setText(news.getWebPublicationDate());
         sectionName.setText(news.getSectionName());
@@ -41,7 +41,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         } else {
             authorTextView.setText(String.format("by %s", news.getAuthor()));
         }
-        return convertView;
+        return listItemView;
     }
 
     public void setItems(List<News> news) {
