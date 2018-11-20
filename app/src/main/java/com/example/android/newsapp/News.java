@@ -1,6 +1,5 @@
 package com.example.android.newsapp;
 
-import java.net.URL;
 
 public class News{
 
@@ -20,11 +19,6 @@ public class News{
     private String webUrl;
 
     /**
-     * Image resource ID for the song
-     */
-    private int ImageResourceId;
-
-    /**
      * Get Author name
      */
     private String author;
@@ -33,15 +27,6 @@ public class News{
      * Get date
      */
     private String webPublicationDate;
-
-
-    /**
-     * URL?
-     */
-    public static final String
-            REQUEST_URL = "https://content.guardianapis.com/search?show-tags=technology&api-key=test";
-
-
 
 
     /**
@@ -87,20 +72,11 @@ public class News{
     }
 
     /**
-     * Get the image resource ID of the word.
-     */
-    public int getImageResourceId() {
-        return ImageResourceId;
-    }
-
-
-    /**
      * Get the Author's name
      */
     public String getAuthor() {
         return author;
     }
-
 
     /**
      * Get the date

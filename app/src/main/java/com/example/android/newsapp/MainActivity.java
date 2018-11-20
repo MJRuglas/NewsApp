@@ -22,7 +22,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<News>> {
     private NewsAdapter adapter;
     private TextView mNoContentTextView;
-    private static final int LOADER_ID = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         adapter = new NewsAdapter(this, new ArrayList<News>());
 
         newsListView.setAdapter(adapter);
+        newsListView.setEmptyView(mNoContentTextView);
+        mNoContentTextView = findViewById(R.id.nocontent_text_view);
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
                 News news = adapter.getItem(position);
 
-                Uri newsUri = Uri.parse(news.REQUEST_URL);
+                Uri newsUri = Uri.parse(news.getWebUrl());
 
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, newsUri);
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         } else {
             View loadingIndicator = findViewById(R.id.loading_indicator);
             loadingIndicator.setVisibility(View.GONE);
+            mNoContentTextView.setText(R.string.Error_Message);
         }
 
     }
@@ -73,8 +76,15 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
         View loadingIndicator = findViewById(R.id.loading_indicator);
-        adapter.setItems(news);
-        loadingIndicator.setVisibility(View.GONE);
+        if (news !=null) {
+            adapter.setItems(news);
+            loadingIndicator.setVisibility(View.GONE);
+        } else {
+            mNoContentTextView.setText("No data available now. Please ty again.");
+            loadingIndicator.setVisibility(View.GONE);
+        }
+
+
     }
 
     @Override
