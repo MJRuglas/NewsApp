@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     public static final String apiKey = BuildConfig.ApiKey;
 
     private static String REQUEST_URL =
-            "https://content.guardianapis.com/search?&show-fields=byline&api-key=" + apiKey;
+            "https://content.guardianapis.com/search?";
 
     // Old URL: "http://content.guardianapis.com/search?show-tags=contributor&api-key=test&q=technology";
 
@@ -87,34 +87,38 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<News>> onCreateLoader(int id, Bundle args) {
 
-            // Create a new loader for the given URL
-            SharedPreferences sharedPreferences =
-                    PreferenceManager.getDefaultSharedPreferences(this);
-            String pageSize = sharedPreferences.getString(
-                    getString(R.string.settings_min_results_key),
-                    getString(R.string.settings_min_results));
+        // Create a new loader for the given URL
+        SharedPreferences sharedPreferences =
+                PreferenceManager.getDefaultSharedPreferences(this);
 
-            String category = sharedPreferences.getString(
-                    getString(R.string.settings_min_results_key),
-                    getString(R.string.settings_min_results));
+        String minNews = sharedPreferences.getString(getString(R.string.settings_min_results_key),
+                getString(R.string.settings_min_results));
+        String orderByString = sharedPreferences.getString(getString(R.string.settings_min_results_key),
+                getString(R.string.settings_min_results));
+        String section = sharedPreferences.getString(getString(R.string.settings_min_results_key),
+                getString(R.string.settings_min_results));
 
-            Uri baseUri = Uri.parse(REQUEST_URL);
-            Uri.Builder uriBuilder = baseUri.buildUpon();
+        Uri baseUri = Uri.parse(REQUEST_URL);
+        Uri.Builder uriBuilder = baseUri.buildUpon();
 
-            uriBuilder.appendQueryParameter("page-size", pageSize);
+        uriBuilder.appendQueryParameter("api-key", "67f29bf2-1b57-4fc0-9e70-7dad512572d9");
+        uriBuilder.appendQueryParameter("show-tags", "contributor");
+        uriBuilder.appendQueryParameter("from-date", "2018-01-01");
+        uriBuilder.appendQueryParameter("q", minNews);
+        uriBuilder.appendQueryParameter("order-by", orderByString);
 
-            // if statement required to ensure that "all" categories setting works
-            if (!category.equals(getString(R.string.settings_min_results))) {
-                uriBuilder.appendQueryParameter("section", category);
-            }
+        if (!section.equals(getString(R.string.settings_min_results_key))) {
+            uriBuilder.appendQueryParameter("section", section);
+        }
 
         return new NewsLoader(this, uriBuilder.toString());
     }
 
+
     @Override
     public void onLoadFinished(Loader<List<News>> loader, List<News> news) {
         View loadingIndicator = findViewById(R.id.loading_indicator);
-        if (news !=null) {
+        if (news != null) {
             adapter.setItems(news);
             loadingIndicator.setVisibility(View.GONE);
         } else {
