@@ -10,6 +10,13 @@ import android.support.v7.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.settings_activity);
+    }
+
+
     public static class TechPreferenceFragment extends PreferenceFragment
             implements Preference.OnPreferenceChangeListener {
 
@@ -18,14 +25,9 @@ public class SettingsActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference minNews = findPreference(getString(R.string.settings_min_results_key));
-            bindPreferenceSummaryToValue(minNews);
-
-            Preference orderBy = findPreference(getString(R.string.settings_order_by_date));
+            Preference orderBy = findPreference(getString(R.string.relevant));
             bindPreferenceSummaryToValue(orderBy);
 
-            Preference section = findPreference(getString(R.string.settings_min_results_key));
-            bindPreferenceSummaryToValue(section);
         }
 
         @Override
@@ -44,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
             return true;
 
         }
+
         private void bindPreferenceSummaryToValue(Preference preference) {
             preference.setOnPreferenceChangeListener(this);
             SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(preference.getContext());

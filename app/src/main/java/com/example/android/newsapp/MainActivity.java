@@ -91,25 +91,15 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         SharedPreferences sharedPreferences =
                 PreferenceManager.getDefaultSharedPreferences(this);
 
-        String minNews = sharedPreferences.getString(getString(R.string.settings_min_results_key),
-                getString(R.string.settings_min_results));
-        String orderByString = sharedPreferences.getString(getString(R.string.settings_min_results_key),
-                getString(R.string.settings_min_results));
-        String section = sharedPreferences.getString(getString(R.string.settings_min_results_key),
-                getString(R.string.settings_min_results));
+        String orderBy = sharedPreferences.getString(getString(R.string.relevant),
+                getString(R.string.settings_order));
 
         Uri baseUri = Uri.parse(REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
         uriBuilder.appendQueryParameter("api-key", "67f29bf2-1b57-4fc0-9e70-7dad512572d9");
         uriBuilder.appendQueryParameter("show-tags", "contributor");
-        uriBuilder.appendQueryParameter("from-date", "2018-01-01");
-        uriBuilder.appendQueryParameter("q", minNews);
-        uriBuilder.appendQueryParameter("order-by", orderByString);
-
-        if (!section.equals(getString(R.string.settings_min_results_key))) {
-            uriBuilder.appendQueryParameter("section", section);
-        }
+        uriBuilder.appendQueryParameter("order-by", "newest");
 
         return new NewsLoader(this, uriBuilder.toString());
     }

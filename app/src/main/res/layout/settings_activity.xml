@@ -6,6 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.android.newsapp.SettingsActivity"
-        android:id="@+id/techFrag">
+        android:id="@+id/techFrag"
+        tools:layout="@layout/settings_activity">
     </fragment>
 
