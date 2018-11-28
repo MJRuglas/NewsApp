@@ -14,7 +14,7 @@
 
         <EditTextPreference
             android:defaultValue="@string/date_default"
-            android:inputType="numberDecimal"
+            android:inputType="textNoSuggestions"
             android:key="@string/date_key"
             android:selectAllOnFocus="true"
             android:title="@string/date"

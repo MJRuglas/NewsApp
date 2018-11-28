@@ -10,7 +10,7 @@
 
     <string name="settings_order_by" translatable="false">Order By</string>
 
-    <string name="settings_order_by_key" translatable="false">order_by</string>
+    <string name="settings_order_by_key" translatable="false">order-by</string>
 
     <string name="settings_order_by_default" translatable="false">@string/relevant_value</string>
 
@@ -22,13 +22,13 @@
 
     <string name="oldest_value" translatable="false">oldest</string>
 
-    <string name="date" translatable="false">Date</string>
+    <string name="date" translatable="false">Date of Publication</string>
 
-    <string name="date_default" translatable="false">11</string>
+    <string name="date_default" translatable="false">published</string>
 
-    <string name="date_hint" translatable="false">Month or Day</string>
+    <string name="date_hint" translatable="false">published or first-publication or last-modified</string>
 
-    <string name="date_key" translatable="false">order_date</string>
+    <string name="date_key" translatable="false">use-date</string>
 
     <string-array name="settings_order_by">
         <item>@string/relevant</item>
