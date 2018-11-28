@@ -8,13 +8,37 @@
 
     <string name="settings_title">Tech Settings</string>
 
-    <string name="settings_min_results">Date</string>
+    <string name="settings_order_by" translatable="false">Order By</string>
 
-    <string name="settings_min_results_key" translatable="false">min_results</string>
+    <string name="settings_order_by_key" translatable="false">order_by</string>
 
-    <string name="settings_order" translatable="false">Order by</string>
+    <string name="settings_order_by_default" translatable="false">@string/relevant_value</string>
 
-    <string name="relevant" translatable="false">relevant or newest</string>
+    <string name="relevant" translatable="false">Newest</string>
+
+    <string name="relevant_value" translatable="false">newest</string>
+
+    <string name="oldest" translatable="false">Oldest</string>
+
+    <string name="oldest_value" translatable="false">oldest</string>
+
+    <string name="date" translatable="false">Date</string>
+
+    <string name="date_default" translatable="false">11</string>
+
+    <string name="date_hint" translatable="false">Month or Day</string>
+
+    <string name="date_key" translatable="false">order_date</string>
+
+    <string-array name="settings_order_by">
+        <item>@string/relevant</item>
+        <item>@string/oldest</item>
+    </string-array>
+
+    <string-array name="settings_order_by_values">
+        <item>@string/relevant_value</item>
+        <item>@string/oldest_value</item>
+    </string-array>
 
 
 </resources>

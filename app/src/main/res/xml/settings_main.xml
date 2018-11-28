@@ -5,12 +5,20 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/settings_title">
 
+    <ListPreference
+        android:defaultValue="@string/settings_order_by_default"
+        android:entries="@array/settings_order_by"
+        android:entryValues="@array/settings_order_by_values"
+        android:key="@string/settings_order_by_key"
+        android:title="@string/settings_order_by"/>
+
         <EditTextPreference
-            android:defaultValue="@string/settings_min_results"
-            android:key="@string/settings_min_results_key"
+            android:defaultValue="@string/date_default"
+            android:inputType="numberDecimal"
+            android:key="@string/date_key"
             android:selectAllOnFocus="true"
-            android:title="@string/settings_order"
-            android:hint="@string/relevant"/>
+            android:title="@string/date"
+            android:hint="@string/date_hint"/>
 
     </PreferenceScreen>
 
